@@ -12,7 +12,6 @@ public class ListTest {
 	static Map<String, Integer> list3 = new HashMap<String, Integer>(); 
 
 	public static void main(String[] args) {
-		
 		list1[0] = 1;
 		list1[1] = 2;
 		list1[2] = 3;

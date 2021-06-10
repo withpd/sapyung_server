@@ -1,4 +1,4 @@
-package kr.co.simba.db;
+package kr.co.sapyung.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +7,12 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import kr.co.simba.Constants;
-import kr.co.simba.vo.ItemVO;
-import kr.co.simba.vo.Order2VO;
-import kr.co.simba.vo.OrderVO;
-import kr.co.simba.vo.ProductVO;
-import kr.co.simba.vo.UserVO;
+import kr.co.sapyung.Constants;
+import kr.co.sapyung.vo.ItemVO;
+import kr.co.sapyung.vo.Order2VO;
+import kr.co.sapyung.vo.OrderVO;
+import kr.co.sapyung.vo.ProductVO;
+import kr.co.sapyung.vo.UserVO;
 
 public class DbDao {
 	private SqlSessionFactory sqlSessionFactory = null;

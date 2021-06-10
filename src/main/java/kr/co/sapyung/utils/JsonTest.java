@@ -1,4 +1,4 @@
-package kr.co.simba.utils;
+package kr.co.sapyung.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 //import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.simba.vo.ProductVO;
+import kr.co.sapyung.vo.ProductVO;
 
 public class JsonTest {
 	public static void main(String[] args) throws IOException {
@@ -37,7 +37,7 @@ public class JsonTest {
 //		list.add(vo1);
 //		list.add(vo);
 		
-		String json = "{\"message\":{\"@type\":\"response\",\"@service\":\"naverservice.nmt.proxy\",\"@version\":\"1.0.0\",\"result\":{\"srcLangType\":\"fr\",\"tarLangType\":\"ko\",\"translatedText\":\"Å©±â\"}}}";
+		String json = "{\"message\":{\"@type\":\"response\",\"@service\":\"naverservice.nmt.proxy\",\"@version\":\"1.0.0\",\"result\":{\"srcLangType\":\"fr\",\"tarLangType\":\"ko\",\"translatedText\":\"Å©ï¿½ï¿½\"}}}";
 		
 		
 		ObjectMapper mapper = new ObjectMapper();

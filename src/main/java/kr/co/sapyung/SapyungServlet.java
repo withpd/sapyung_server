@@ -1,4 +1,4 @@
-package kr.co.simba;
+package kr.co.sapyung;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.simba.brand.maje.MajeSelectTask;
-import kr.co.simba.db.DbDao;
-import kr.co.simba.db.DbFactory;
-import kr.co.simba.vo.ItemVO;
-import kr.co.simba.vo.Order2VO;
-import kr.co.simba.vo.OrderVO;
-import kr.co.simba.vo.ProductVO;
-import kr.co.simba.vo.UserVO;
+import kr.co.sapyung.brand.maje.MajeSelectTask;
+import kr.co.sapyung.db.DbDao;
+import kr.co.sapyung.db.DbFactory;
+import kr.co.sapyung.vo.ItemVO;
+import kr.co.sapyung.vo.Order2VO;
+import kr.co.sapyung.vo.OrderVO;
+import kr.co.sapyung.vo.ProductVO;
+import kr.co.sapyung.vo.UserVO;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -27,8 +27,8 @@ import java.util.List;
  	mvn tomcat7:run
 */
 
-@WebServlet(name = "simbaservlet", urlPatterns = "/Simba")
-public class SimbaServlet extends HttpServlet {
+@WebServlet(name = "sapyungservlet", urlPatterns = "/Sapyung")
+public class SapyungServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	DbDao dao = new DbDao(DbFactory.getSqlSessionFactory());

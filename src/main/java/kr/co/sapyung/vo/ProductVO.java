@@ -1,4 +1,4 @@
-package kr.co.simba.vo;
+package kr.co.sapyung.vo;
 
 public class ProductVO {
 	private String brand;

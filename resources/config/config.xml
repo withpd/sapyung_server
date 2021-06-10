@@ -5,11 +5,11 @@
   
 <configuration>
     <typeAliases>
-        <typeAlias alias="ProductVO" type="kr.co.simba.vo.ProductVO"/>        
-        <typeAlias alias="UserVO" type="kr.co.simba.vo.UserVO"/>
-        <typeAlias alias="ItemVO" type="kr.co.simba.vo.ItemVO"/>
-        <typeAlias alias="OrderVO" type="kr.co.simba.vo.OrderVO"/>
-        <typeAlias alias="Order2VO" type="kr.co.simba.vo.Order2VO"/>
+        <typeAlias alias="ProductVO" type="kr.co.sapyung.vo.ProductVO"/>        
+        <typeAlias alias="UserVO" type="kr.co.sapyung.vo.UserVO"/>
+        <typeAlias alias="ItemVO" type="kr.co.sapyung.vo.ItemVO"/>
+        <typeAlias alias="OrderVO" type="kr.co.sapyung.vo.OrderVO"/>
+        <typeAlias alias="Order2VO" type="kr.co.sapyung.vo.Order2VO"/>
     </typeAliases>
   
     <environments default="development">

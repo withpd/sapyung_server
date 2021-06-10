@@ -1,4 +1,4 @@
-package kr.co.simba.vo;
+package kr.co.sapyung.vo;
 
 public class ItemVO {
 	// INSERT INTO SIMBA_ITEM (MAIL, NAME, COLOR, LENGTH, AMOUNT, PRICE, ISLIKE, IMGURL, TIME) VALUES (#{mail}, #{name}, #{color}, #{sizes}, #{amount}, #{price}, #{isLike}, #{img_url}, #{time})

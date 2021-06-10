@@ -1,7 +1,7 @@
 <web-app>
 	<servlet>
-		<servlet-name>SimbaServlet</servlet-name>
-		<servlet-class>kr.co.simba.SimbaServlet</servlet-class>
+		<servlet-name>SapyungServlet</servlet-name>
+		<servlet-class>kr.co.sapyung.SapyungServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<session-config>

@@ -1,4 +1,4 @@
-package kr.co.simba.vo;
+package kr.co.sapyung.vo;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class OrderVO {
 	private String deliveryPrice;
 	private String productPrice;
 	private String totalPrice;
-	private String orderStatus; 		// 0:ÁÖ¹®È®ÀÎ, 1:°áÁ¦´ë±â, 2:°áÁ¦¿Ï·á, 3:¹è¼ÛÁß, 4:¹è¼Û¿Ï·á, 5:¹ÝÇ°½ÅÃ», 6:¹ÝÇ°È®ÀÎÁß, 7:¹ÝÇ°´ë±â, 8:¹ÝÇ°¿Ï·á
+	private String orderStatus; 		// 0:ï¿½Ö¹ï¿½È®ï¿½ï¿½, 1:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 2:ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½, 3:ï¿½ï¿½ï¿½ï¿½ï¿½, 4:ï¿½ï¿½Û¿Ï·ï¿½, 5:ï¿½ï¿½Ç°ï¿½ï¿½Ã», 6:ï¿½ï¿½Ç°È®ï¿½ï¿½ï¿½ï¿½, 7:ï¿½ï¿½Ç°ï¿½ï¿½ï¿½, 8:ï¿½ï¿½Ç°ï¿½Ï·ï¿½
 	private ItemVO itemVo;
 
 	public String getMail() {

@@ -1,4 +1,4 @@
-package kr.co.simba.impl;
+package kr.co.sapyung.impl;
 
 public abstract class I_DataSelector extends Thread{
 	public abstract int getList(int size, int start);

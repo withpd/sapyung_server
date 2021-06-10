@@ -1,4 +1,4 @@
-package kr.co.simba;
+package kr.co.sapyung;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package kr.co.simba.utils;
+package kr.co.sapyung.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

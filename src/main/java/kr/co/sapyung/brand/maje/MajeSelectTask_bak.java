@@ -1,4 +1,4 @@
-package kr.co.simba.brand.maje;
+package kr.co.sapyung.brand.maje;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import kr.co.simba.Constants;
-import kr.co.simba.db.DbDao;
-import kr.co.simba.vo.ProductVO;
+import kr.co.sapyung.Constants;
+import kr.co.sapyung.db.DbDao;
+import kr.co.sapyung.vo.ProductVO;
 
 public class MajeSelectTask_bak extends Thread {
 

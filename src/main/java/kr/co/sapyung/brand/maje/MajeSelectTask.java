@@ -1,4 +1,4 @@
-package kr.co.simba.brand.maje;
+package kr.co.sapyung.brand.maje;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,11 +10,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import kr.co.simba.Constants;
-import kr.co.simba.db.DbDao;
-import kr.co.simba.impl.I_DataSelector;
-import kr.co.simba.utils.RegularExUtils;
-import kr.co.simba.vo.ProductVO;
+import kr.co.sapyung.Constants;
+import kr.co.sapyung.db.DbDao;
+import kr.co.sapyung.impl.I_DataSelector;
+import kr.co.sapyung.utils.RegularExUtils;
+import kr.co.sapyung.vo.ProductVO;
 
 public class MajeSelectTask extends I_DataSelector{
 
@@ -183,7 +183,7 @@ public class MajeSelectTask extends I_DataSelector{
 			imgElements = imgElements.select("img");
 			cateElements = cateElements.select("li");
 
-			System.out.println("Ä«Å×°í¸® : " + cateElements.get(0).text().toString());
+			System.out.println("Ä«ï¿½×°ï¿½ : " + cateElements.get(0).text().toString());
 			
 			// Img Url
 //			JSONObject imgObj = new JSONObject();

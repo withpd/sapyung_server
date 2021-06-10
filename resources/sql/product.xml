@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+<!-- 
+	create table simba_maje(URL VARCHAR(150),IMG_URL VARCHAR(1000), PRICE VARCHAR(8), SIZES VARCHAR(20), COLOR VARCHAR(20), ISSELL VARCHAR(1), TITLE VARCHAR(30), TIME VARCHAR(14)); 
+-->
+	<resultMap id="productResult" type="ProductVO">
+		<result property="url" column="url" />
+		<result property="img_url" column="img_url" />
+		<result property="price" column="price" />
+		<result property="sizes" column="sizes" />
+		<result property="color" column="color" />
+		<result property="isSell" column="isSell" />
+		<result property="title" column="title" />
+		<result property="time" column="time" />
+		<result property="idx" column="idx" />
+		<result property="cate" column="cate" />
+	</resultMap>
+
+	<select id="selectRange" parameterType="java.util.HashMap" resultMap="productResult">
+		SELECT * FROM SIMBA_MAJE where idx >= #{offset} and idx &lt; #{readCount}
+	</select>
+
+	<select id="selectAll" resultMap="productResult">
+		SELECT * FROM SIMBA_MAJE
+	</select>
+
+	<select id="selectProductById" parameterType="int" resultMap="productResult">
+		SELECT * FROM SIMBA_MAJE WHERE id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="ProductVO">
+		INSERT INTO SIMBA_MAJE (idx, url, img_url, price, sizes, color, isSell, title, time, cate) VALUES (#{idx}, #{url}, #{img_url}, #{price}, #{sizes}, #{color}, #{isSell}, #{title}, #{time}, #{cate})
+	</insert>
+	
+	<update id="insertList" parameterType="java.util.List">
+		INSERT ALL
+		<foreach collection="list" item="vo" separator=" ">
+			INTO SIMBA_MAJE (idx, url, img_url, price, sizes, color, isSell, title, time, cate) VALUES (#{vo.idx}, #{vo.url}, #{vo.img_url}, #{vo.price}, #{vo.sizes}, #{vo.color}, #{vo.isSell}, #{vo.title}, #{vo.time}, #{vo.cate})
+		</foreach>
+		SELECT * FROM DUAL
+	</update>
+	
+
+	<update id="update" parameterType="ProductVO">
+		UPDATE SIMBA_MAJE
+		SET name = #{name}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE from SIMBA_MAJE WHERE id = #{id}
+	</delete>
+	
+	<delete id="deleteAll" >
+		DELETE from SIMBA_MAJE
+	</delete>
+	
+	<insert id="insertItem" parameterType="ProductVO">
+		INSERT INTO SIMBA_ITEM (MAIL, NAME, COLOR, LENGTH, AMOUNT, PRICE, ISLIKE, IMGURL, TIME, CATE) VALUES (#{mail}, #{name}, #{color}, #{sizes}, #{amount}, #{price}, #{isLike}, #{img_url}, #{time}, #{cate})
+	</insert>
+	
+</mapper>

@@ -1,0 +1,93 @@
+<html>
+<head>
+
+<!--==================================================================
+        CSS Stylesheets
+    ==================================================================-->
+<link rel='stylesheet' type='text/css' href='css/style.css'>
+<link rel='stylesheet' type='text/css' href='css/pinterest-style-1.css'>
+<link rel='stylesheet' type='text/css' href='css/bottom-menu-style.css'>	
+
+
+</head>
+<body>
+	<div id="columns" align="center"></div>
+<!--==================================================================
+    JavaScript Files
+==================================================================-->
+	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<script src='js/simba.js'></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		pres_page = "display.html";
+		$(document).ready(function() { 
+			getList("range", "Maje", getImgCnt());
+		});
+		var wheel_check = true;
+	
+		$(window).scroll(function(){
+		    <!--alert($(window).scrollTop() + ", " + $(window).height() + "," + $(document).height());-->
+		    if($(window).scrollTop() + $(window).height() >= ($(document).height()-1)) {
+		    	// console.log("END Scroll : " + getImgCnt());
+		    	if(wheel_check == true) {
+		    		wheel_check = false;
+			    	getList("range", "Maje", getImgCnt());
+		    	}
+		    	/* var links = [].slice.call(document.querySelectorAll(".pn-ProductNav_Link"));
+		    	links.forEach(function(item) {
+		     		if(item.getAttribute('aria-selected')) {
+		     			isLoading = 'false';
+		     			//console.log(item.getAttribute('value'));
+		     			//getList(item.getAttribute('value'));
+		    		}
+		    	}) */
+		    }
+		});
+		
+		function getList(type, brand, offset) {
+			var xmlhttp = new XMLHttpRequest();
+		    xmlhttp.open("GET", "Simba?type=" + type + "&brand=" + brand + "&offset=" + offset, true);
+		    xmlhttp.send();
+		   	if(brand == 'Maje' && pres_page == 'display.html') {
+			    xmlhttp.onreadystatechange = function() {
+		        	if (xmlhttp.readyState === 4 && xmlhttp.status == 200) {
+			           	var jsonData = JSON.parse(xmlhttp.response);
+			           	/* console.log(jsonData.length); */
+			           	jsonData.forEach(function(item) {
+			           		addElement(item);
+			           	});
+			           	
+			           	/* 
+						console.log("imgList : " + imgList);
+			        	console.log("colorList : " + colorList);
+			        	console.log("sizeList : " + sizeList);
+			        	console.log("price : " + price);
+			        	console.log("title : " + title);
+			        	console.log("url : " + url); */ 
+			        	//document.getElementById("loader").style.visibility = "hidden";
+				   		wheel_check = true;
+		        	}
+		      	}
+		   	}
+		}	
+		
+		function getImgCnt() {
+			var rootDiv = document.getElementById("columns");
+			return rootDiv.childElementCount;
+		}
+		
+		$(function() {
+			$('html, body').on('mousewheel DOMMouseScroll', function(e) {
+				if(wheel_check == false && pres_page == "display.html") {
+					e.preventDefault();
+					e.stopPropagation();
+				} else {
+					return true;
+				}
+			});
+		});
+		
+	</script>
+
+</body>
+</html>

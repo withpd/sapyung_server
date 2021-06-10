@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<resultMap id="userResult" type="UserVO">
+		<result property="id" column="id" />
+		<result property="accessToken" column="accessToken" />
+		<result property="name" column="name" />
+		<result property="mail" column="mail" />
+		<result property="thumbNailImg" column="thumbNailImg" />
+		<result property="isEmailValid" column="isEmailValid" />
+		<result property="isEmailVerified" column="isEmailVerified" />
+		<result property="loginType" column="loginType" />
+	</resultMap>
+
+	<select id="selectUserByMail" parameterType="String" resultMap="userResult">
+		SELECT * FROM SIMBA_USER WHERE MAIL = #{mail}
+	</select>
+
+	<insert id="insertUser" parameterType="UserVO">
+		INSERT INTO SIMBA_USER (ACCESSTOKEN, NAME, MAIL, THUMBNAILIMG, ISEMAILVALID, ISEMAILVERIFIED, LOGINTYPE) VALUES (#{accessToken}, #{name}, #{mail}, #{thumbNailImg}, #{isEmailValid}, #{isEmailVerified}, #{loginType})
+	</insert>
+
+	<update id="updateAccessToken" parameterType="java.util.HashMap">
+		UPDATE SIMBA_USER SET ACCESSTOKEN = #{accessToken} WHERE mail=#{mail}
+	</update>
+
+
+
+</mapper>

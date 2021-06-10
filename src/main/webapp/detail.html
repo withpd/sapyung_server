@@ -1,0 +1,112 @@
+<html>
+<head>
+<!--==================================================================
+        CSS Stylesheets
+==================================================================-->
+<link rel='stylesheet' type='text/css' href='css/lightslider.css'>
+<link rel='stylesheet' type='text/css' href='css/select_box.css'>
+
+<style type="text/css">
+
+tr{
+width: 100%;
+}
+
+</style>
+
+</head>
+<body>
+<!--==================================================================
+    JavaScript Files
+==================================================================-->
+	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<script src='js/simba.js'></script>
+	<script src='js/lightslider.js'></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		pres_page = "detail.html";
+		backVisible('display.html', true);
+		// document.getElementById("img_back").style.visibility = "visible";
+		$('#lightSlider').lightSlider({
+			gallery : true,
+			item : 1,
+			loop : true,
+			slideMargin : 0,
+			thumbItem : 5
+		});
+		
+		$(function(){ 
+			  $('.bt_up').click(function(){ 
+			    var n = $('.bt_up').index(this);
+			    var num = $(".num:eq("+n+")").val();
+			    if(num != 99) {
+			    	num = $(".num:eq("+n+")").val(num*1+1);
+			    }
+			  });
+			  $('.bt_down').click(function(){ 
+			    var n = $('.bt_down').index(this);
+			    var num = $(".num:eq("+n+")").val();
+			    if(num != 1) {
+			    	num = $(".num:eq("+n+")").val(num*1-1);
+			    }
+			  });
+			})
+			  
+	</script>
+
+
+	<div class="slider">
+		<div style="margin-bottom: 5px;">
+			<span id="cate" style="color:white;"></span>
+			<span id="title" style="color:white;"></span>
+		</div>
+		<ul id="lightSlider"> </ul>
+		<div class="detail_contents">
+			<!-- <p id="title"></p> -->
+
+			<div id="detail_info" style="width: auto;">
+
+				<select id="custom-color" class="soflow">
+					<option>Select an Color</option>
+				</select> 
+				<select id="custom-size" class="soflow">
+					<option>Select an Size</option>
+				</select>
+			</div>
+			
+          	<table style="width=auto;" >
+	            <tr>
+		            <td>
+			            <strong>
+							<p style='display:inline;' id="price"></p> EURO &nbsp;&nbsp;&nbsp;
+						</strong>
+					</td>
+	              	<td>
+	              		<input type="text" style="text-align:center" maxlength="2" value="1" size="3" id="amount" class="num"/>
+        		  	</td>
+	              	<td>
+		                <div>
+		                  <img src="img/up.png" alt="" width="10" height="10" class="bt_up"/>
+		                </div>
+		                <div>
+		                  <img src="img/down.png" alt="" width="10" height="10" class="bt_down" />
+		                </div>
+	              	</td>
+            	</tr>
+	            <tr>
+	            	<td colspan="3">
+		            	<button class="soflow" onclick="btnClick('like')" style="width: 100%">LIKE</button>
+					</td>
+	            </tr>
+	            <tr>
+	            	<td colspan="3">
+		            	<button class="soflow" onclick="btnClick('buy')" style="width: 100%">BUY</button>
+					</td>
+				</tr>
+          </table>
+			
+		</div>
+	</div>
+	
+</body>
+</html>

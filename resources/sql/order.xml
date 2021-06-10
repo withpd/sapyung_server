@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order">
+
+	<resultMap id="itemResult" type="ItemVO">
+		<result property="mail" column="mail" />
+		<result property="name" column="name" />
+		<result property="color" column="color" />
+		<result property="length" column="length" />
+		<result property="price" column="price" />
+		<result property="saveType" column="saveType" />
+		<result property="imgUrl" column="imgUrl" />
+		<result property="time" column="time" />
+		<result property="title" column="title" />
+		<result property="amount" column="amount" />
+		<result property="updateTime" column="updateTime" />
+		<result property="cate" column="cate" />
+	</resultMap>
+	
+	<resultMap id="orderResult2" type="Order2VO">
+		<result property="mail" column="mail" />
+		<result property="name" column="name" />
+		<result property="phone" column="phone" />
+		<result property="addr" column="addr" />
+		<result property="tong" column="tong" />
+		<result property="color" column="color" />
+		<result property="length" column="length" />
+		<result property="amount" column="amount" />
+		<result property="imgUrl" column="imgUrl" />
+		<result property="title" column="title" />
+		<result property="price" column="price" />
+		<result property="cate" column="cate" />
+		<result property="orderTime" column="order_time" />
+		<result property="updateTime" column="update_time" />
+		<result property="deliveryPrice" column="delivery_price" />
+		<result property="productPrice" column="product_price" />
+		<result property="totalPrice" column="total_price" />
+		<result property="orderStatus" column="order_status" />
+	</resultMap>	
+
+	<resultMap id="orderResult1" type="OrderVO">
+		<result property="mail" column="mail" />
+		<result property="name" column="name" />
+		<result property="phone" column="phone" />
+		<result property="addr" column="addr" />
+		<result property="tong" column="tong" />
+		<result property="orderTime" column="orderTime" />
+		<result property="updateTime" column="updateTime" />
+		<result property="deliveryPrice" column="deliveryPrice" />
+		<result property="productPrice" column="productPrice" />
+		<result property="totalPrice" column="totalPrice" />
+		<result property="orderStatus" column="orderStatus" />
+		<result property="itemVo" column="itemVo" />
+	</resultMap>	
+
+	<!-- INSERT INTO SIMBA_USER (ACCESSTOKEN, NAME, MAIL, THUMBNAILIMG, ISEMAILVALID, ISEMAILVERIFIED, LOGINTYPE) VALUES (#{accessToken}, #{name}, #{mail}, #{thumbNailImg}, #{isEmailValid}, #{isEmailVerified}, #{loginType}) -->
+	<insert id="insertOrder" parameterType="java.util.ArrayList">
+		INSERT ALL  
+		<foreach collection="list" item="vo" separator=" ">
+			INTO SIMBA_ORDER(MAIL, NAME, PHONE, ADDR, TONG, COLOR, LENGTH, AMOUNT, PRICE, TITLE, IMGURL, ORDER_TIME, UPDATE_TIME, CATE, DELIVERY_PRICE, PRODUCT_PRICE, TOTAL_PRICE, ORDER_STATUS)
+			VALUES (#{vo.mail}, #{vo.name}, #{vo.phone}, #{vo.addr}, #{vo.tong}, #{vo.itemVo.color}, #{vo.itemVo.length}, #{vo.itemVo.amount}, #{vo.itemVo.price}, #{vo.itemVo.title}, #{vo.itemVo.imgUrl}, #{vo.orderTime}, #{vo.updateTime}, '', #{vo.deliveryPrice}, #{vo.productPrice}, #{vo.totalPrice}, #{vo.orderStatus})
+		</foreach>
+		SELECT * FROM DUAL
+	</insert>
+
+	<select id="selectOrderByUser" parameterType="OrderVO" resultMap="orderResult2">
+		SELECT * FROM SIMBA_ORDER WHERE MAIL = #{mail} ORDER BY ORDER_TIME DESC
+	</select>	
+	
+</mapper>

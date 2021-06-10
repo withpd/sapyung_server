@@ -1,0 +1,10 @@
+<web-app>
+	<servlet>
+		<servlet-name>SimbaServlet</servlet-name>
+		<servlet-class>kr.co.simba.SimbaServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+</web-app>

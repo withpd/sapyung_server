@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="item">
+
+	<resultMap id="itemResult" type="ItemVO">
+		<result property="mail" column="mail" />
+		<result property="name" column="name" />
+		<result property="color" column="color" />
+		<result property="length" column="length" />
+		<result property="price" column="price" />
+		<result property="saveType" column="saveType" />
+		<result property="imgUrl" column="imgUrl" />
+		<result property="time" column="time" />
+		<result property="title" column="title" />
+		<result property="amount" column="amount" />
+		<result property="updateTime" column="updateTime" />
+		<result property="cate" column="cate" />
+	</resultMap>
+
+	<insert id="insertItem" parameterType="ItemVO">
+		INSERT INTO SIMBA_ITEM (MAIL, NAME, COLOR, LENGTH, AMOUNT, PRICE, SAVETYPE, IMGURL, TIME, TITLE, CATE) VALUES (#{mail}, #{name}, #{color}, #{length}, #{amount}, #{price}, #{saveType}, #{imgUrl}, #{time}, #{title}, #{cate})
+	</insert>
+	
+	<select id="selectItem" parameterType="ItemVO" resultMap="itemResult">
+		SELECT * FROM SIMBA_ITEM WHERE MAIL = #{mail} AND COLOR = #{color} AND LENGTH = #{length} AND SAVETYPE = #{saveType} AND TITLE = #{title}
+	</select>
+	
+	<update id="updateAmount" parameterType="ItemVO">
+		UPDATE SIMBA_ITEM
+		SET AMOUNT = #{amount}, UPDATE_TIME = #{updateTime} 
+		WHERE MAIL = #{mail} AND NAME = #{name} AND COLOR = #{color} AND LENGTH = #{length} AND SAVETYPE = #{saveType} AND TITLE = #{title} 
+	</update>
+	
+	<select id="selectItemByType" parameterType="ItemVO" resultMap="itemResult">
+		SELECT * FROM SIMBA_ITEM WHERE MAIL = #{mail} AND SAVETYPE = #{saveType}
+	</select>
+
+	<delete id="deleteItem" parameterType="java.util.ArrayList" >
+		DELETE SIMBA_ITEM WHERE 
+		<foreach collection="list" item="vo" open="(" close=")" separator=" OR ">
+			MAIL = #{vo.mail} AND IMGURL = #{vo.imgUrl} AND COLOR = #{vo.color} AND SAVETYPE = #{vo.saveType} AND LENGTH = #{vo.length} AND AMOUNT = #{vo.amount} AND PRICE = #{vo.price} AND TITLE = #{vo.title}
+		</foreach>
+	</delete>
+		
+</mapper>

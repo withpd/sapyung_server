@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+    <typeAliases>
+        <typeAlias alias="ProductVO" type="kr.co.simba.vo.ProductVO"/>        
+        <typeAlias alias="UserVO" type="kr.co.simba.vo.UserVO"/>
+        <typeAlias alias="ItemVO" type="kr.co.simba.vo.ItemVO"/>
+        <typeAlias alias="OrderVO" type="kr.co.simba.vo.OrderVO"/>
+        <typeAlias alias="Order2VO" type="kr.co.simba.vo.Order2VO"/>
+    </typeAliases>
+  
+    <environments default="development">
+        <environment id="development">
+          <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+                <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+                <property name="username" value="system"/>
+                <property name="password" value="bsh0812"/>
+                
+                <!-- <property name="url" value="jdbc:oracle:thin:@112.216.130.195:1521:orcl"/>
+                <property name="username" value="sys_user"/>
+                <property name="password" value="bsh0812"/> -->
+            </dataSource>
+       </environment>
+    </environments>
+    <mappers>
+       <mapper resource="sql/product.xml"/>
+       <mapper resource="sql/user.xml"/>
+       <mapper resource="sql/item.xml"/>
+       <mapper resource="sql/order.xml"/>
+    </mappers>
+</configuration>

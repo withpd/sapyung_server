@@ -8,11 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import kr.co.sapyung.Constants;
-import kr.co.sapyung.vo.ItemVO;
-import kr.co.sapyung.vo.Order2VO;
-import kr.co.sapyung.vo.OrderVO;
-import kr.co.sapyung.vo.ProductVO;
-import kr.co.sapyung.vo.UserVO;
 
 public class DbDao {
 	private SqlSessionFactory sqlSessionFactory = null;
@@ -20,7 +15,7 @@ public class DbDao {
 	public DbDao(SqlSessionFactory sqlSessionFactory){
         this.sqlSessionFactory = sqlSessionFactory;
     }
-	
+	/*
 	public List<ProductVO> selectRange(int offset, int readCount) {
 		List<ProductVO> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -311,5 +306,5 @@ public class DbDao {
 			session.close();
 		}
 		return retList;
-	}
+	}*/
 }

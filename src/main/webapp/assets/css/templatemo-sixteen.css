@@ -58,7 +58,7 @@ ul.social-icons li a:hover {
 	color: #fff;
 }
 
-a.filled-button {
+.filled-button {
 	background-color: #f33f3f;
 	color: #fff;
 	font-size: 14px;
@@ -70,7 +70,7 @@ a.filled-button {
 	transition: all 0.3s;
 }
 
-a.filled-button:hover {
+.filled-button:hover {
 	background-color: #121212;
 	color: #fff;
 }
@@ -636,17 +636,17 @@ footer .inner-content p a {
   color: #f33f3f;
 }
 
-.products ul.pages {
+ul.pages {
 	margin-top: 30px;
 	text-align: center;
 }
 
-.products ul.pages li {
+ul.pages li {
 	display: inline-block;
 	margin: 0px 2px;
 }
 
-.products ul.pages li a {
+ul.pages li a {
 	width: 44px;
 	height: 44px;
 	display: inline-block;
@@ -658,8 +658,8 @@ footer .inner-content p a {
 	transition: all .3s;
 }
 
-.products ul.pages li a:hover,
-.products ul.pages li.active a {
+ul.pages li a:hover,
+ul.pages li.active a {
 	background-color: #f33f3f;
 	border-color: #f33f3f;
 	color: #fff;
@@ -873,7 +873,7 @@ footer .inner-content p a {
 	border: 1px solid #eee;
 }
 
-.contact-form button.filled-button {
+.contact-form .filled-button {
 	background-color: #f33f3f;
 	color: #fff;
 	font-size: 14px;
@@ -888,7 +888,7 @@ footer .inner-content p a {
 	cursor: pointer;
 }
 
-.contact-form button.filled-button:hover {
+.contact-form .filled-button:hover {
 	background-color: #121212;
 	color: #fff;
 }
@@ -1057,4 +1057,13 @@ footer .inner-content p a {
 		right: 0;
 		bottom: 0;
 	}
+}
+
+#mask {  
+  position:absolute;  
+  left:0;
+  top:0;
+  z-index:9000;  
+  background-color:#000;  
+  display:none;  
 }

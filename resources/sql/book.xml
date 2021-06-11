@@ -3,21 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="item">
+<mapper namespace="book">
 
-	<resultMap id="itemResult" type="ItemVO">
-		<result property="mail" column="mail" />
-		<result property="name" column="name" />
-		<result property="color" column="color" />
-		<result property="length" column="length" />
-		<result property="price" column="price" />
-		<result property="saveType" column="saveType" />
-		<result property="imgUrl" column="imgUrl" />
-		<result property="time" column="time" />
+	<resultMap id="bookResult" type="BookVO">
+		<result property="author" column="author" />
 		<result property="title" column="title" />
-		<result property="amount" column="amount" />
-		<result property="updateTime" column="updateTime" />
-		<result property="cate" column="cate" />
+		<result property="price" column="price" />
+		<result property="date" column="date" />
+		<result property="publisher" column="publisher" />
+		<result property="isbn" column="isbn" />
 	</resultMap>
 
 	<insert id="insertItem" parameterType="ItemVO">

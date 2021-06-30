@@ -1,6 +1,6 @@
 package kr.co.sapyung.vo;
 
-public class UserVO {
+public class UserVo {
     private String mail;
     private String location;
     private String pw;

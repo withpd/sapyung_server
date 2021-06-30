@@ -5,7 +5,7 @@
 
 <mapper namespace="user">
 
-	<resultMap id="userResult" type="UserVO">
+	<resultMap id="userResult" type="UserVo">
 		<result property="id" column="id" />
 		<result property="accessToken" column="accessToken" />
 		<result property="name" column="name" />
@@ -15,7 +15,7 @@
 		<result property="isEmailVerified" column="isEmailVerified" />
 		<result property="loginType" column="loginType" />
 	</resultMap>
-
+<!-- 
 	<select id="selectUserByMail" parameterType="String" resultMap="userResult">
 		SELECT * FROM SIMBA_USER WHERE MAIL = #{mail}
 	</select>
@@ -28,6 +28,6 @@
 		UPDATE SIMBA_USER SET ACCESSTOKEN = #{accessToken} WHERE mail=#{mail}
 	</update>
 
-
+ -->
 
 </mapper>

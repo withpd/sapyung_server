@@ -5,8 +5,8 @@
   
 <configuration>
     <typeAliases>
-        <typeAlias alias="BookVO" type="kr.co.sapyung.vo.BookVO"/>        
-        <typeAlias alias="UserVO" type="kr.co.sapyung.vo.UserVO"/>
+        <typeAlias alias="BookVo" type="kr.co.sapyung.vo.BookVo"/>        
+        <typeAlias alias="UserVo" type="kr.co.sapyung.vo.UserVo"/>
     </typeAliases>
   
     <environments default="development">

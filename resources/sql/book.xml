@@ -5,7 +5,7 @@
 
 <mapper namespace="book">
 
-	<resultMap id="bookResult" type="BookVO">
+	<resultMap id="bookResult" type="BookVo">
 		<result property="author" column="author" />
 		<result property="title" column="title" />
 		<result property="price" column="price" />
@@ -13,7 +13,7 @@
 		<result property="publisher" column="publisher" />
 		<result property="isbn" column="isbn" />
 	</resultMap>
-
+<!-- 
 	<insert id="insertItem" parameterType="ItemVO">
 		INSERT INTO SIMBA_ITEM (MAIL, NAME, COLOR, LENGTH, AMOUNT, PRICE, SAVETYPE, IMGURL, TIME, TITLE, CATE) VALUES (#{mail}, #{name}, #{color}, #{length}, #{amount}, #{price}, #{saveType}, #{imgUrl}, #{time}, #{title}, #{cate})
 	</insert>
@@ -38,5 +38,5 @@
 			MAIL = #{vo.mail} AND IMGURL = #{vo.imgUrl} AND COLOR = #{vo.color} AND SAVETYPE = #{vo.saveType} AND LENGTH = #{vo.length} AND AMOUNT = #{vo.amount} AND PRICE = #{vo.price} AND TITLE = #{vo.title}
 		</foreach>
 	</delete>
-		
+	 -->	
 </mapper>

@@ -1,7 +1,7 @@
 <web-app>
 	<servlet>
-		<servlet-name>SapyungServlet</servlet-name>
-		<servlet-class>kr.co.sapyoung.SapyungServlet</servlet-class>
+		<servlet-name>SapyoungServlet</servlet-name>
+		<servlet-class>kr.co.sapyoung.SapyoungServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<session-config>

@@ -1,4 +1,4 @@
-package kr.co.sapyung.utils;
+package kr.co.sapyoung.utils;
 
 public class RegularExUtils {
 	public static String getNumber(String str) {

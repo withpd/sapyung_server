@@ -1,4 +1,4 @@
-package kr.co.sapyung.db;
+package kr.co.sapyoung.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import kr.co.sapyung.Constants;
+import kr.co.sapyoung.Constants;
 
 public class DbDao {
 	private SqlSessionFactory sqlSessionFactory = null;

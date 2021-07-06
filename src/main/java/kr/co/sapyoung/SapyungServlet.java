@@ -1,4 +1,4 @@
-package kr.co.sapyung;
+package kr.co.sapyoung;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.sapyung.db.DbDao;
-import kr.co.sapyung.db.DbFactory;
+import kr.co.sapyoung.db.DbDao;
+import kr.co.sapyoung.db.DbFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

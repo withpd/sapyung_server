@@ -1,4 +1,4 @@
-package kr.co.sapyung;
+package kr.co.sapyoung;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

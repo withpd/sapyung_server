@@ -18,8 +18,8 @@ import java.io.IOException;
  	mvn tomcat7:run
 */
 
-@WebServlet(name = "sapyungservlet", urlPatterns = "/Sapyung")
-public class SapyungServlet extends HttpServlet {
+@WebServlet(name = "sapyoungservlet", urlPatterns = "/sapyoung")
+public class SapyoungServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	DbDao dao = new DbDao(DbFactory.getSqlSessionFactory());

@@ -1,4 +1,4 @@
-package kr.co.sapyung.utils;
+package kr.co.sapyoung.utils;
 
 import java.sql.SQLException;
 

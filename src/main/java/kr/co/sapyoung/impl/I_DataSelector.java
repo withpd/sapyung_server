@@ -1,4 +1,4 @@
-package kr.co.sapyung.impl;
+package kr.co.sapyoung.impl;
 
 public abstract class I_DataSelector extends Thread{
 	public abstract int getList(int size, int start);

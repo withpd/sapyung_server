@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>kr.co.sapyung</groupId>
-	<artifactId>Sapyung</artifactId>
+	<groupId>kr.co.sapyoung</groupId>
+	<artifactId>sapyoung</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -45,7 +45,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SapyungServlet</finalName>
+		<finalName>SapyoungServlet</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

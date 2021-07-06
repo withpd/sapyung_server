@@ -1,4 +1,4 @@
-package kr.co.sapyung.vo;
+package kr.co.sapyoung.vo;
 
 public class BookVo {
 	private String author;

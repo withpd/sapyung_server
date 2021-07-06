@@ -18,7 +18,7 @@ import java.io.IOException;
  	mvn tomcat7:run
 */
 
-@WebServlet(name = "sapyoungservlet", urlPatterns = "/sapyoung")
+@WebServlet(name = "SapyoungServlet", urlPatterns = "/sapyoung")
 public class SapyoungServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

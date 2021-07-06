@@ -45,7 +45,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SapyungServlet</finalName>
+		<finalName>SapyoungServlet</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

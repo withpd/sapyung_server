@@ -1,4 +1,4 @@
-package kr.co.sapyung.db;
+package kr.co.sapyoung.db;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

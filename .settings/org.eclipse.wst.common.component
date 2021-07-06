@@ -3,7 +3,7 @@
     
     
     
-    <wb-module deploy-name="SapyungServlet">
+    <wb-module deploy-name="SapyoungServlet">
                                         
         
         
@@ -31,12 +31,12 @@
         
         
         
-        <property name="context-root" value="SapyungServlet"/>
+        <property name="context-root" value="SapyoungServlet"/>
                                         
         
         
         
-        <property name="java-output-path" value="/Sapyung/target/classes"/>
+        <property name="java-output-path" value="/Sapyoung/target/classes"/>
                                     
     
     

@@ -22,8 +22,8 @@ function request() {
                     alert('잠시 후에 다시 시도해주세요');
                 },
                 success : function(parse_data){
-                        var json = eval('[' + parse_data + ']')[0];
-						alert(json);
+                        /*var json = eval('[' + parse_data + ']')[0];*/
+						alert(parse_data);
                 }
             });
         });

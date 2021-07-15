@@ -1,259 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+	<meta charset="EUC-KR">
+	<title>GERBUGI</title>
+	<link rel="stylesheet" href="css/Gerbugi/sap.css"> 
+	<link rel="stylesheet" href="https://sapyoung.com:56116/theme/everyday/css/mobile_shop.css?ver=171222">
 
-  <head>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<script type="text/javascript">
+		function move() {
+			var page_id = document.getElementById("select_page").value;
+			location.replace(page_id + ".html");
+		}
+		function search() {
+			var search_input = document.getElementById("search_input").value;
+			if(search_input == "") {
+				/* 조건이 참 */
+				alert("검색어를 입력해주세요")
+			} else {
+				/* 조건이 거짓 */
+				alert("검색어는 " + search_input + "입니다")
+			}
+		}
+		
+		function insert() {
+			console.log("insert");
+			/* DB에서 데이터를 가져왔다고 가정  */
+			/* var result = "result1"; */
+			var search_input = document.getElementById("search_input").value;
+			
+			var a1 = "text" + 3;
+			var a2 = 3 + 3;
+			
+			console.log("a1 : " + a1);
+			console.log("a2 : " + a2);
+			
+			document.getElementById("td1").innerHTML = search_input + 3;
+			document.getElementById("td2").innerHTML = 2 + 3;
+		}
+		
+		/* Teachable Machine Function Start */
+		// More API functions here:
+	    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+	
+	    // the link to your model provided by Teachable Machine export panel
+	    const URL = "./model/";
+	
+	    let model, webcam, labelContainer, maxPredictions;
+	
+	    // Load the image model and setup the webcam
+	    async function init() {
+	        const modelURL = URL + "model.json";
+	        const metadataURL = URL + "metadata.json";
+	
+	        // load the model and metadata
+	        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+	        // or files from your local hard drive
+	        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+	        model = await tmImage.load(modelURL, metadataURL);
+	        maxPredictions = model.getTotalClasses();
+	
+	        // Convenience function to setup a webcam
+	        const flip = true; // whether to flip the webcam
+	        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+	        await webcam.setup(); // request access to the webcam
+	        await webcam.play();
+	        window.requestAnimationFrame(loop);
+	
+	        // append elements to the DOM
+	        document.getElementById("webcam-container").appendChild(webcam.canvas);
+	        labelContainer = document.getElementById("label-container");
+	        for (let i = 0; i < maxPredictions; i++) { // and class labels
+	            labelContainer.appendChild(document.createElement("div"));
+	        }
+	    }
+	
+	    async function loop() {
+	        webcam.update(); // update the webcam frame
+	        await predict();
+	        window.requestAnimationFrame(loop);
+	    }
+	
+	    // run the webcam image through the image model
+	    async function predict() {
+	        // predict can take in an image, video or canvas html element
+	        const prediction = await model.predict(webcam.canvas);
+	        for (let i = 0; i < maxPredictions; i++) {
+	            const classPrediction =
+	                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+	            labelContainer.childNodes[i].innerHTML = classPrediction;
+	        }
+	    }		
+		/* Teachable Machine Function End */
+	</script>
+</head>
+<body>
+	<!-- MENU Start -->
+	<div style="background-color: rgba(235,233,229,1); padding: 30px;">
+		<span>
+			<img src="https://sapyoung.com:56116/theme/everyday/img/logo.png" alt="(주)사회평론" title="">
+		</span>
+		<span style="float:right; margin-left: 20px; vertical-align: middle; line-height: 43px;">
+			<select id="select_page" onchange="move();">
+			<option value="0">선택하세요</option>
+			<option value="1">1004yhjae</option>
+			<option value="2">623mp</option>
+			<option value="3">allende8505</option>				
 
-    <title>SAPYOUNG</title>
+			</select>
+		</span>
+		
+		<span style="float:right; margin-left: 20px; vertical-align: middle; line-height: 43px;">
+			<a href="https://www.sapyoung.com" target="_blank">item3</a>
+		</span>
+	
+		<span style="float:right; margin-left: 20px; vertical-align: middle; line-height: 43px;">
+			<a href="https://sapyoung.com:56116/bbs/board.php?bo_table=booklist1">item2</a> 
+		</span>
+	
+		<span style="float:right; cursor:pointer; text-decoration: underline; vertical-align: middle; line-height: 43px;">
+			<a onclick="alert('CLICK')">item1</a>
+		</span>
+	</div>
+	<!-- MENU End -->	
+	
+	<!-- Image Start -->
+	<div>
+		<img style="width:100%" src="https://sapyoung.com:56116/data/banner/3" alt="" width="1000" height="590" title="">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	</div>
+	<!-- Image End -->
+	
+	<!--Main Start -->
+	<div>
+	<h1>20210715 - gerbugi - h1</h1>
+	
+	<!-- Teachable Machine Start  -->
+	<div>
+		<p>Teachable Machine</p>
+		<div>Teachable Machine Image Model</div>
+		<button type="button" onclick="init()">Start</button>
+		<div id="webcam-container"></div>
+		<div id="label-container"></div>
+	</div>
+	
+	
+	<!-- Teachable Machine End  -->
+	
+	<!--Table Start -->
+	<table id="table_id">
+		<thead>
+			<tr>
+				<th width="30%">ROW_HEAD1</th>
+				<td width="30%">Menu01</td>
+				<td width="20%">Menu02</td>
+				<td width="20%">Menu03</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="tr_color">
+				<th>ROW_HEAD2</th>
+				<td id="td1"></td>
+				<td id="td2"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>ROW_HEAD3</th>
+				<td>Value11</td>
+				<td>Value12</td>
+				<td>Value13</td>
+			</tr>
+			<tr class="tr_color">
+				<th>ROW_HEAD4</th>
+				<td>Value21</td>
+				<td>Value22</td>
+				<td>Value23</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--Table End -->
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    
-    
+	<!--Table Menu Start -->	
+	<div align="right" style="margin-right: 30px;">
+		<input id="search_input" type="text" />
+		<button onclick="insert();">검색</button>
+	</div>
+	<!--Table Menu End -->	
+	
+	</div>
+	<!--Main End -->																
+	
+</body>
+<footer id="footer_w">
+	<div class="ft_top">
+		<div class="inner">
+			<ul class="ft_top_ul">
+				<li><a href="/page/privacy.php">개인정보취급방침</a></li>
+				<li><a href="/page/stipulation.php">이용약관</a></li>
+			</ul>
+			<ul class="ft_sns tb_view">
+				<li><a href="https://www.facebook.com/sapyoungbook" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic1.png"></a></li>
+				<li><a href="https://cafe.naver.com/yongyong" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic2.png"></a></li>
+			    <li><a href="http://www.ebricks.co.kr/" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic3.png"></a></li>
+				<li><a href="https://www.youtube.com/channel/UCn3OPR5XK2yYMhBsVa668Ow" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic4.png"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="ft_bot">
+		<div class="inner">
+			<h1 id="logo"><a href="https://sapyoung.com:56116"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_logo.png" alt="(주)사회평론"></a></h1>
+			<ul class="ft_sns mob_view">
+				<li><a href="https://www.facebook.com/sapyoungbook" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic1.png"></a></li>
+				<li><a href="https://cafe.naver.com/yongyong" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic2.png"></a></li>
+			    <li><a href="http://www.ebricks.co.kr/" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic3.png"></a></li>
+				<li><a href="https://www.youtube.com/channel/UCn3OPR5XK2yYMhBsVa668Ow" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic4.png"></a></li>
+			</ul>
+			<div class="ft_com">
+				<ul class="cf">
+					<li>상호명 : (주)사회평론</li>
+					<li>대표 : 윤철호</li>
+					<li>주소 : 서울시 마포구 월드컵북로6길 56 사평빌딩</li>
+					<li>사업자등록번호 : 105-81-55677</li>
+					<li>대표전화번호 : 02-326-1182</li>
+					<li>팩스번호 : 02-326-1626</li>
+				</ul>
+				<p class="copy">Copyrights @ 2019 사회평론 All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+	<div id="m_sch_box">
+		<div class="m_sch_bg"></div>
+		<div class="m_sch">
+			<!-- 검색영역 [시작]  -->
+			<div id="hd_sch2">
+				<form name="frmsearch1" action="https://sapyoung.com:56116/bbs/search.php" onsubmit="return search_submit(this);">
+					<div class="sch_inner">
+						<h2 style="display:none">상품 검색</h2>
+						<label for="sch_str" class="sound_only">상품명<strong class="sound_only"> 필수</strong></label>
+						<input type="hidden" name="sfl" value="wr_subject||wr_content">
+						<input type="text" name="stx" value="" id="sch_str" required="" class="frm_input" placeholder="SEARCH">
+						<input type="submit" value="검색" class="btn_submit">
+						<button type="button" class="pop_close"><span class="sound_only">검색 </span>닫기</button>
+					</div>
+					<button type="button" id="hd_sch_open">검색<span class="sound_only"> 열기</span></button>
+				</form>
+			</div>
+			<!-- 검색영역 [끝]  -->
+			<script>
+				$(function (){
+					var $hd_sch = $("#hd_sch");
+					$("#hd_sch_open").click(function(){
+						$hd_sch.css("display","block");
+					});
+					$("#hd_sch .pop_close").click(function(){
+						$hd_sch.css("display","none");
+					});
+				});
+				function search_submit(f) {
+					if (f.q.value.length < 2) {
+						alert("검색어는 두글자 이상 입력하십시오.");
+						f.q.select();
+						f.q.focus();
+						return false;
+					}
 
-
-
-  </head>
-
-  <body>
-
-	<div id="mask"></div>
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-
-    <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"><h2>SA<em>PYOUNG</em></h2></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="index00.html">Our Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
-    <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4>Best Offer</h4>
-            <h2>New Arrivals On Sale</h2>
-          </div>
-        </div>
-        <div class="banner-item-02">
-          <div class="text-content">
-            <h4>Flash Deals</h4>
-            <h2>Get your best products</h2>
-          </div>
-        </div>
-        <div class="banner-item-03">
-          <div class="text-content">
-            <h4>Last Minute</h4>
-            <h2>Grab last minute deals</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Banner Ends Here -->
-
-    <div class="latest-products">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>Latest Products</h2>
-              <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
-            </div>
-          </div>
-          
-          <div class="col-md-12">
-            <div class="row float-right">
-				<select name="option" type="" class="col-xs-2" id="search_condition" placeholder="search" required="">
-					<option value='isbn'>ISBN</option>
-					<option value='title'>梨낆젣紐�</option>
-					<option value='publisher'>異쒗뙋�궗</option>            	
-					<option value='author'>����옄紐�</option>
-	           	</select>
-             	<input name="name" id="search_word" type="text" class="col-xs-8" id="search_word" placeholder="Full Name" required="" style="margin-left: 2px;">
-              	<button class="filled-button" style="color: white; cursor: pointer; margin-left: 2px;" onclick="search()">Search</button>
-             </div>
-           </div>
-          
-			<div class="col-md-12" style="margin-top: 20px;	">
-			<table class="table table-borderless table-striped"">
-			  <thead>
-			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">First</th>
-			      <th scope="col">Last</th>
-			      <th scope="col">Handle</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>Jacob</td>
-			      <td>Thornton</td>
-			      <td>@fat</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">3</th>
-			      <td colspan="2">Larry the Bird</td>
-			      <td>@twitter</td>
-			    </tr>
-			  </tbody>
-			</table>
-          
-          </div>
-          <div class="col-md-12">
-          	<ul class="pages">
-          		<li><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-          		<li><div>1</div>
-            	<li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-          	</ul>
-       	</div>   
-       </div>
-      </div>
-    </div>
-
-    <div class="best-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Sixteen Clothing</h2>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <h4>Looking for the best products?</h4>
-              <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">This template</a> is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website. <a rel="nofollow" href="https://templatemo.com/contact">Contact us</a> for more info.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-                <li><a href="#">Non cum id reprehenderit</a></li>
-              </ul>
-              <a href="about.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="assets/images/feature-image.jpg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Creative &amp; Unique <em>Sixteen</em> Products</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="filled-button">Purchase Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright &copy; 2021 SAPYUNG Co., Ltd.
-            
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/sapyung.js"></script>
-
-
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-    </script>
-
-
-  </body>
-
+					return true;
+				}
+			</script>		
+			<div id="m_sch_close">
+				<img src="https://sapyoung.com:56116/theme/everyday/img/mobile/m_sch_close.png">
+			</div>
+		</div>
+	</div>
+</footer>
 </html>

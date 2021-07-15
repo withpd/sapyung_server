@@ -1,0 +1,22 @@
+h1, p {
+		text-align: center;
+		color: #F08080;
+		font-size: 2vw;
+		font-family: sans-serif;
+		}
+
+/* table, th {border: 1px solid green;}
+ */
+ 
+ #table_id {
+ 	width: 100%;
+ 	padding: 10px;
+ }
+
+.tr_color {
+	background-color: rgba(235, 233, 229, 1); 
+}
+
+td{
+	text-align: center;
+}

@@ -1,6 +1,6 @@
 function request() {
 	var type = "sapyoung";
-	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung";
+	var LOCAL_URL = "localhost:8080/sapyoung";
 	 $(document).ready(function(){
                 hide_mask();
         })

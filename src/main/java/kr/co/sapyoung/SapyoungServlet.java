@@ -16,7 +16,6 @@ import java.io.IOException;
 
 /* 
  	mvn tomcat7:run
- 	http://localhost:8080/sapyoung/sapyoung?type=sapyoung
 */
 
 @WebServlet(name = "SapyoungServlet", urlPatterns = "/sapyoung")
@@ -33,20 +32,18 @@ public class SapyoungServlet extends HttpServlet {
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doPut(req, resp);
-		System.out.println("doPut");
 		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doPost(req, resp);
-		System.out.println("doPost");
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String type = req.getParameter("type");
-		System.out.println("type from front : " + type);
+		
 		System.out.printf(Constants.LOG_START_FORMAT, this.getClass().getName(), "doGet", Constants.getDate(Constants.DATE_LOG_FORMAT), type);
 		String retJson = null;
 		ObjectMapper mapper = null;
@@ -62,11 +59,6 @@ public class SapyoungServlet extends HttpServlet {
 //			mapper = new ObjectMapper();
 //			out = new ByteArrayOutputStream();
 //			mapper.writeValue(out, productList);
-		} 
-		else {
-			mapper = new ObjectMapper();
-			out = new ByteArrayOutputStream();
-			mapper.writeValue(out, type);
 		}
 		
 	    final byte[] data = out.toByteArray();

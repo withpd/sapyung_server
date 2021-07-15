@@ -25,7 +25,7 @@ function insert() {
 // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
 // the link to your model provided by Teachable Machine export panel
-const URL = "./model/";
+const URL = "./model/withpd/";
 
 let model, webcam, labelContainer, maxPredictions;
 

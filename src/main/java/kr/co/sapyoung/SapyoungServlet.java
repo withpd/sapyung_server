@@ -62,7 +62,7 @@ public class SapyoungServlet extends HttpServlet {
 		} else if(type.equals("sapyoung")) {
 			mapper = new ObjectMapper();
 			out = new ByteArrayOutputStream();
-			mapper.writeValue(out, "Hello~");
+			mapper.writeValue(out, "Hello~!");
 		}
 		
 	    final byte[] data = out.toByteArray();

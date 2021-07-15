@@ -1,6 +1,6 @@
 function request() {
 	var type = "sapyoung";
-	var LOCAL_URL = "localhost:8080/sapyoung";
+	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung";
 	 $(document).ready(function(){
         })
         .ajaxStart(function(){
@@ -19,7 +19,7 @@ function request() {
                     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
                 },
                 error : function(){
-                    info('잠시 후에 다시 시도해주세요');
+                    alert('잠시 후에 다시 시도해주세요');
                 },
                 success : function(parse_data){
                         var json = eval('[' + parse_data + ']')[0];

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="EUC-KR">
 	<title>WITHPD</title>
-	<link rel="stylesheet" href="tmp/sap.css">
+	<link rel="stylesheet" href="css/withpd/sap.css">
 	<link rel="stylesheet" href="https://sapyoung.com:56116/theme/everyday/css/mobile_shop.css?ver=171222">
 	
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -158,50 +158,6 @@
 					<li>팩스번호 : 02-326-1626</li>
 				</ul>
 				<p class="copy">Copyrights @ 2019 사회평론 All Rights Reserved.</p>
-			</div>
-		</div>
-	</div>
-	<div id="m_sch_box">
-		<div class="m_sch_bg"></div>
-		<div class="m_sch">
-			<!-- 검색영역 [시작]  -->
-			<div id="hd_sch2">
-				<form name="frmsearch1" action="https://sapyoung.com:56116/bbs/search.php" onsubmit="return search_submit(this);">
-					<div class="sch_inner">
-						<h2 style="display:none">상품 검색</h2>
-						<label for="sch_str" class="sound_only">상품명<strong class="sound_only"> 필수</strong></label>
-						<input type="hidden" name="sfl" value="wr_subject||wr_content">
-						<input type="text" name="stx" value="" id="sch_str" required="" class="frm_input" placeholder="SEARCH">
-						<input type="submit" value="검색" class="btn_submit">
-						<button type="button" class="pop_close"><span class="sound_only">검색 </span>닫기</button>
-					</div>
-					<button type="button" id="hd_sch_open">검색<span class="sound_only"> 열기</span></button>
-				</form>
-			</div>
-			<!-- 검색영역 [끝]  -->
-			<script>
-				$(function (){
-					var $hd_sch = $("#hd_sch");
-					$("#hd_sch_open").click(function(){
-						$hd_sch.css("display","block");
-					});
-					$("#hd_sch .pop_close").click(function(){
-						$hd_sch.css("display","none");
-					});
-				});
-				function search_submit(f) {
-					if (f.q.value.length < 2) {
-						alert("검색어는 두글자 이상 입력하십시오.");
-						f.q.select();
-						f.q.focus();
-						return false;
-					}
-
-					return true;
-				}
-			</script>		
-			<div id="m_sch_close">
-				<img src="https://sapyoung.com:56116/theme/everyday/img/mobile/m_sch_close.png">
 			</div>
 		</div>
 	</div>

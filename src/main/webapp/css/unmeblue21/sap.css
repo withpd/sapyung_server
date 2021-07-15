@@ -1,0 +1,32 @@
+h1, p {
+	text-align: center;
+	color: #008299;
+	font-size: 4vw;
+}
+
+/* table, th {
+	border: 1px solid red;
+} */
+
+.attr1 {
+	border: 3px solid green;
+}
+
+#table_id {
+	width: 100%;
+	padding: 20px;
+}
+	
+.tr_color {
+	background-color: rgba(235,233,229,1);
+}	
+	
+td {
+	text-align: center;
+}
+	
+	
+	
+	
+	
+	

@@ -1,3 +1,58 @@
+function request() {
+	var type = "sapyoung";
+	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung";
+	 $(document).ready(function(){
+                hide_mask();
+        })
+        .ajaxStart(function(){
+                if(mask_flag == false) {
+                        show_mask();
+                        mask_flag = true;
+                }
+        })
+        .ajaxStop(function(){
+                hide_mask();
+        });
+
+        $(document).ready(function(){
+            $.ajax({
+                crossOrigin : true,
+                type : "GET", // 전송방식을 지정한다 (POST,GET)
+                url : LOCAL_URL + '?type=' + type,
+                dataType : "html",// 호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을
+                                                                // 사용할 수 있다.
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                },
+                error : function(){
+                    info('잠시 후에 다시 시도해주세요');
+                },
+                success : function(parse_data){
+                        var json = eval('[' + parse_data + ']')[0];
+                        if(type == 'VINTEDCATE') {
+                                vintedJson = json;
+                        } else if(type == 'CAROUSELLCATE') {
+                                carousellJson = json;
+                        } else if(type == 'MERCICATE') {
+                                merciJson = json;
+                        } else if(type == 'MATCHESMENCATE') {
+                                matchesMenJson = json;
+                        } else if(type == 'MATCHESWOMENCATE') {
+                                matchesWomenJson = json;
+                        }
+                        var keyList = Object.keys(json);
+                        for (var i = 0; i<keyList.length; i++) {
+                                var key = keyList[i];
+                                addSubCate(cateUpSelectBox, json[key]);
+                        }
+                        hide_mask();
+                }
+            });
+        });
+
+}
+
+
 function move() {
 	var select_page = document.getElementById("select_page").value;
 	location.replace(select_page + ".html")
@@ -43,7 +98,7 @@ async function init() {
 
 	// Convenience function to setup a webcam
 	const flip = true; // whether to flip the webcam
-	webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+	webcam = new tmImage.Webcam(600, 600, flip); // width, height, flip
 	await webcam.setup(); // request access to the webcam
 	await webcam.play();
 	window.requestAnimationFrame(loop);
@@ -72,4 +127,4 @@ async function predict() {
 		labelContainer.childNodes[i].innerHTML = classPrediction;
 	}
 }
-		/* Teachable Machine Function End */
+/* Teachable Machine Function End */

@@ -23,22 +23,7 @@ function request() {
                 },
                 success : function(parse_data){
                         var json = eval('[' + parse_data + ']')[0];
-                        if(type == 'VINTEDCATE') {
-                                vintedJson = json;
-                        } else if(type == 'CAROUSELLCATE') {
-                                carousellJson = json;
-                        } else if(type == 'MERCICATE') {
-                                merciJson = json;
-                        } else if(type == 'MATCHESMENCATE') {
-                                matchesMenJson = json;
-                        } else if(type == 'MATCHESWOMENCATE') {
-                                matchesWomenJson = json;
-                        }
-                        var keyList = Object.keys(json);
-                        for (var i = 0; i<keyList.length; i++) {
-                                var key = keyList[i];
-                                addSubCate(cateUpSelectBox, json[key]);
-                        }
+						alert(json);
                 }
             });
         });

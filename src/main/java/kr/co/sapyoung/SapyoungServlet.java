@@ -46,7 +46,7 @@ public class SapyoungServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String type = req.getParameter("type");
-		System.out.println("data from front : " + type);
+		System.out.println("type from front : " + type);
 		System.out.printf(Constants.LOG_START_FORMAT, this.getClass().getName(), "doGet", Constants.getDate(Constants.DATE_LOG_FORMAT), type);
 		String retJson = null;
 		ObjectMapper mapper = null;
@@ -69,9 +69,9 @@ public class SapyoungServlet extends HttpServlet {
 			mapper.writeValue(out, type);
 		}
 		
-//	    final byte[] data = out.toByteArray();
-//	    retJson = new String(data);
-//		resp.setContentType("text/json");
-//		resp.getWriter().write(retJson);
+	    final byte[] data = out.toByteArray();
+	    retJson = new String(data);
+		resp.setContentType("text/json");
+		resp.getWriter().write(retJson);
 	}
 }

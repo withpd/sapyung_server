@@ -2,16 +2,10 @@ function request() {
 	var type = "sapyoung";
 	var LOCAL_URL = "localhost:8080/sapyoung";
 	 $(document).ready(function(){
-                hide_mask();
         })
         .ajaxStart(function(){
-                if(mask_flag == false) {
-                        show_mask();
-                        mask_flag = true;
-                }
         })
         .ajaxStop(function(){
-                hide_mask();
         });
 
         $(document).ready(function(){
@@ -45,7 +39,6 @@ function request() {
                                 var key = keyList[i];
                                 addSubCate(cateUpSelectBox, json[key]);
                         }
-                        hide_mask();
                 }
             });
         });

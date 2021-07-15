@@ -1,24 +1,276 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>ysb0807</title>
-	<link rel="stylesheet" href="tmp/sap.css">
-</head>
+	<meta charset="EUC-KR">
+	<title>YSB0807</title>
+	<link rel="stylesheet" href="css/ysb0807/sap.css">
+	<link rel="stylesheet" href="https://sapyoung.com:56116/theme/everyday/css/mobile_shop.css?ver=171222">
+	
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+		
+	<script type="text/javascript">
+		function move() {
+			var page_id = document.getElementById("select_page").value;
+			location.replace(page_id + ".html");
+		}
+		
+		function search() {
+			var search_input = document.getElementById("search_input").value;
+			if(search_input == "") {
+				alert("검색어를 입력해주세요!");
+			} else {
+				alert("검색어는 " + search_input + " 입니다");
+			}
+		} 
+		
+		function insert(){
+			console.log("insert");
+			/* DB에서 데이터를 가지고 왔다고 가정  */
+			/* var result = "result1"; */
+			var res = document.getElementById("search_input").value;
+			
+			var a1 = "text" + 3;
+			var a2 = 3 + 3;
+			
+			console.log("a1 : +a1");
+			console.log("a2 : +a2");
+			
+			document.getElementById("td1").innerHTML = res + 3;
+			document.getElementById("td2").innerHTML = 2 + 3;
+		}
+		
+		/* Teachable Machine Function Start  */
+		
+		// More API functions here:
+    	// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
+   		// the link to your model provided by Teachable Machine export panel
+    	const URL = "./model/ysb0807/";
+
+    	let model, webcam, labelContainer, maxPredictions;
+
+    	// Load the image model and setup the webcam
+    	async function init() {
+        	const modelURL = URL + "model.json";
+        	const metadataURL = URL + "metadata.json";
+
+        	// load the model and metadata
+        	// Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        	// or files from your local hard drive
+        	// Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        	model = await tmImage.load(modelURL, metadataURL);
+        	maxPredictions = model.getTotalClasses();
+
+        	// Convenience function to setup a webcam
+        	const flip = true; // whether to flip the webcam
+        	webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        	await webcam.setup(); // request access to the webcam
+        	await webcam.play();
+        	window.requestAnimationFrame(loop);
+
+        	// append elements to the DOM
+        	document.getElementById("webcam-container").appendChild(webcam.canvas);
+        	labelContainer = document.getElementById("label-container");
+        	for (let i = 0; i < maxPredictions; i++) { // and class labels
+            	labelContainer.appendChild(document.createElement("div"));
+        	}
+    	}
+
+    	async function loop() {
+        	webcam.update(); // update the webcam frame
+        	await predict();
+        	window.requestAnimationFrame(loop);
+    	}
+
+    	// run the webcam image through the image model
+    	async function predict() {
+        	// predict can take in an image, video or canvas html element
+        	const prediction = await model.predict(webcam.canvas);
+        	for (let i = 0; i < maxPredictions; i++) {
+            	const classPrediction =
+                	prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+           		labelContainer.childNodes[i].innerHTML = classPrediction;
+        	}
+    	}
+		
+		/* Teachable Machine Function End  */
+	</script>
+	
+</head>
 <body>
-<div>
-	안녕하세요
-	윤수빈입니다
-</div>
-<div>
-	안녕하세요2
-</div>
-<div>
-	윤수빈입니다2
-</div>
+	<!-- Menu Start -->
+	<div style="background-color: rgba(235,233,229,1); padding: 10px;">
+		<span>
+			<img src="https://sapyoung.com:56116/theme/everyday/img/logo.png" alt="(주)사회평론" title="">    
+		</span> 
+		
+		<span style="float:right; margin-left: 10px; vertical-align: middle; line-height: 43px;">
+			<select id="select_page" onchange="move();">
+				<option value="0">선택하세요</option>
+				<option value="1004yhjae">1004yhjae</option>
+				<option value="623mp">623mp</option>
+				<option value="allende8505">allende8505</option>
+			</select>
+		</span>
+		
+		<span style="float:right; margin-left: 10px; vertical-align: middle; line-height: 43px;">
+			<a href="https://www.sapyoung.com" target="_blank">item3</a>
+		</span>
+		<span style="float:right; margin-left: 10px; vertical-align: middle; line-height: 43px;">
+			<a href="https://sapyoung.com:56116/bbs/board.php?bo_table=booklist1">item2</a>
+		</span>
+		<span style="float:right; cursor:pointer; text-decoration: underline; vertical-align: middle; line-height: 43px;" >
+			<a onclick="alert('CLICK')">item1</a>
+		</span>
+	</div>
+	<!-- Menu End -->
+	
+	<!-- Image Start -->
+	<div>
+		<img style="width: 100%" src="https://sapyoung.com:56116/data/banner/3">
+	</div>
+	<!-- Image End -->
+	
+	<!-- Main Start -->
+	<div>
+		<h1>20210714 - YSB0807 - h1</h1>
+		
+		<!--  Teachable Machine Start -->
+		<div>
+			<p>Teachable Machine</p>
+			<div>Teachable Machine Image Model</div>
+			<button type="button" onclick="init()">Start</button>
+			<div id="webcam-container"></div>
+			<div id="label-container"></div>
+		</div>
+		
+		<!--  Teachable Machine End -->
+		
+		<!-- Table Start -->
+		<table id="table_id">
+			<thead>
+				<tr>
+					<th width="30%">ROW_HEAD1</th>
+					<td width="10%">Menu01</td>
+					<td width="40%">Menu02</td>
+					<td width="20%">Menu03</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="tr_color">
+					<th>ROW_HEAD2</th>
+					<td id="td1"></td>
+					<td id="td2"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>ROW_HEAD3</th>
+					<td>Value11</td>
+					<td>Value12</td>
+					<td>Value13</td>
+				</tr>
+				<tr class="tr_color">
+					<th>ROW_HEAD4</th>
+					<td>Value21</td>
+					<td>Value22</td>
+					<td>Value23</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Table End -->
+		
+		<!-- Table Menu Start -->
+		<div align="right" style="margin-right: 10px;">
+			<input id="search_input" type="text" />
+			<button onclick="insert();">검색</button>
+		</div>
+		<!-- Table Menu End -->
+		
+	</div>
+	<!-- Main End -->
 	
 </body>
-<footer> 
-	여기는 footer 영역입니다
+<footer id="footer_w">
+	<div class="ft_top">
+		<div class="inner">
+			<ul class="ft_top_ul">
+				<li><a href="/page/privacy.php">개인정보취급방침</a></li>
+				<li><a href="/page/stipulation.php">이용약관</a></li>
+			</ul>
+			<ul class="ft_sns tb_view">
+				<li><a href="https://www.facebook.com/sapyoungbook" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic1.png"></a></li>
+				<li><a href="https://cafe.naver.com/yongyong" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic2.png"></a></li>
+			    <li><a href="http://www.ebricks.co.kr/" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic3.png"></a></li>
+				<li><a href="https://www.youtube.com/channel/UCn3OPR5XK2yYMhBsVa668Ow" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic4.png"></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="ft_bot">
+		<div class="inner">
+			<h1 id="logo"><a href="https://sapyoung.com:56116"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_logo.png" alt="(주)사회평론"></a></h1>
+			<ul class="ft_sns mob_view">
+				<li><a href="https://www.facebook.com/sapyoungbook" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic1.png"></a></li>
+				<li><a href="https://cafe.naver.com/yongyong" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic2.png"></a></li>
+			    <li><a href="http://www.ebricks.co.kr/" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic3.png"></a></li>
+				<li><a href="https://www.youtube.com/channel/UCn3OPR5XK2yYMhBsVa668Ow" target="_blank"><img src="https://sapyoung.com:56116/theme/everyday/img/ft_ic4.png"></a></li>
+			</ul>
+			<div class="ft_com">
+				<ul class="cf">
+					<li>상호명 : (주)사회평론</li>
+					<li>대표 : 윤철호</li>
+					<li>주소 : 서울시 마포구 월드컵북로6길 56 사평빌딩</li>
+					<li>사업자등록번호 : 105-81-55677</li>
+					<li>대표전화번호 : 02-326-1182</li>
+					<li>팩스번호 : 02-326-1626</li>
+				</ul>
+				<p class="copy">Copyrights @ 2019 사회평론 All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+	<div id="m_sch_box">
+		<div class="m_sch_bg"></div>
+		<div class="m_sch">
+			<!-- 검색영역 [시작]  -->
+			<div id="hd_sch2">
+				<form name="frmsearch1" action="https://sapyoung.com:56116/bbs/search.php" onsubmit="return search_submit(this);">
+					<div class="sch_inner">
+						<h2 style="display:none">상품 검색</h2>
+						<label for="sch_str" class="sound_only">상품명<strong class="sound_only"> 필수</strong></label>
+						<input type="hidden" name="sfl" value="wr_subject||wr_content">
+						<input type="text" name="stx" value="" id="sch_str" required="" class="frm_input" placeholder="SEARCH">
+						<input type="submit" value="검색" class="btn_submit">
+						<button type="button" class="pop_close"><span class="sound_only">검색 </span>닫기</button>
+					</div>
+					<button type="button" id="hd_sch_open">검색<span class="sound_only"> 열기</span></button>
+				</form>
+			</div>
+			<!-- 검색영역 [끝]  -->
+			<script>
+				$(function (){
+					var $hd_sch = $("#hd_sch");
+					$("#hd_sch_open").click(function(){
+						$hd_sch.css("display","block");
+					});
+					$("#hd_sch .pop_close").click(function(){
+						$hd_sch.css("display","none");
+					});
+				});
+				function search_submit(f) {
+					if (f.q.value.length < 2) {
+						alert("검색어는 두글자 이상 입력하십시오.");
+						f.q.select();
+						f.q.focus();
+						return false;
+					}
+
+					return true;
+				}
+			</script>		
+			<div id="m_sch_close">
+				<img src="https://sapyoung.com:56116/theme/everyday/img/mobile/m_sch_close.png">
+			</div>
+		</div>
+	</div>
 </footer>
 </html>

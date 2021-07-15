@@ -14,7 +14,7 @@
 	<script type="text/javascript">
 	    function move() {
 	    	var page_id = document.getElementById("select_page").value;
-	    	location.replace("index_02010708.html")
+	    	location.replace(page_id + ".html");
 	    }
 	
 	
@@ -50,13 +50,13 @@
    		// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
     	// the link to your model provided by Teachable Machine export panel
-   		 const URL = "./model/";
+   		 const URL = "./model/seravision/";
 
   		  let model, webcam, labelContainer, maxPredictions;
 
    		 // Load the image model and setup the webcam
   		 async function init() {
-          	 const modelURL = URL + "model.json";
+          	 const modelURL = URL + "model/.json";
        		 const metadataURL = URL + "metadata.json";
 
 		        // load the model and metadata
@@ -117,9 +117,21 @@
 		     		<select id="select_page" onchange="move();">
 		     		
 		     		<option value="0">선택하세요</option>
-		     		<option value="1004yhjae">1004yhjae</option>
-		     		<option value="623mp">623mp</option>
-		     		<option value="allende8505">allende8505</option>
+				    <option value="1004yhjae">1004yhjae</option>
+				    <option value="about">about</option>
+				    <option value="allende8505">allende8505</option>
+				    <option value="imachiri">imachiri</option>
+				    <option value="1004yhjae">1004yhjae</option>
+				    <option value="imachiri">imachiri</option>
+				    <option value="1004yhjae">1004yhjae</option>
+				    <option value="allende8505">allende8505</option>
+				    <option value="imachiri">imachiri</option>
+				    <option value="1004yhjae">1004yhjae</option>
+				    <option value="allende8505">allende8505</option>
+				    <option value="imachiri">imachiri</option>
+				    <option value="1004yhjae">1004yhjae</option>
+				    <option value="allende8505">allende8505</option>
+				    <option value="imachiri">imachiri</option>
 		     		</select>		 
 			 </span>	 
 				 

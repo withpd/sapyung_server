@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>YEONJU</title>
+    <title>Yeunju</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -95,7 +95,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="section-heading">
-              <h2>Latest Products</h2>
+              <h2>공지사항</h2>
               <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
             </div>
           </div>
@@ -117,10 +117,10 @@
 			<table class="table table-borderless table-striped"">
 			  <thead>
 			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">First</th>
-			      <th scope="col">Last</th>
-			      <th scope="col">Handle</th>
+			      <th scope="col">No</th>
+			      <th scope="col">카테고리</th>
+			      <th scope="col">제목</th>
+			      <th scope="col">글쓴이</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -141,6 +141,11 @@
 			      <td colspan="2">Larry the Bird</td>
 			      <td>@twitter</td>
 			    </tr>
+		    <tr>
+			      <th scope="row">4</th>
+			      <td colspan="2">Yeunju</td>
+			      <td>@twitter</td>
+			    </tr>			    
 			  </tbody>
 			</table>
           
@@ -223,7 +228,47 @@
       </div>
     </footer>
 
+<?
+   include_once("../base_include.php");
+   //$REG_DATE= date("Y-m-d H:i:s");
+   $REG_USERID = "MIG_".date("Ymd");
 
+   global $mlink;
+   
+   
+   
+   //1분이내
+   /*
+   최종업데이트
+   */
+   
+   $sql = "
+      SELECT
+         *
+      FROM 
+         $_DB_DMS.DEALER_PART
+      WHERE 
+         DEALER_CODE = '1'
+   ";
+   $curs= mysql_action_select($sql, 2);
+   while($data= safe_out(mysqli_fetch_array($curs)))
+   {
+      //NOW_AMOUNT = > 현재고 -> ($data에 있는 값)
+      //$_DB_DMS.REPAIR_PART_OUTSTOCK_DETAIL 테이블 DP_IDX가 동일한 부품의 합 = > 총출고 -> ($data에 DP_IDX 있음)
+      // 입고 - 출고 = 재고
+      //$_DB_DMS.REPAIR_PART_OUTSTOCK_DETAIL 테이블 DP_IDX = $_DB_DMS.DEALER_PART 테이블 DP_IDX
+      //
+
+
+      //$_DB_DMS.DEALER_INSTOCK_DETAIL 테이블에 INSERT
+      // DI_IDX = 1
+      // DEALER_CODE = 1
+
+      $sql = "
+      
+      ";
+   }
+?>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

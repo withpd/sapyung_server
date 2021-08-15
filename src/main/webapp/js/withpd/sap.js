@@ -23,7 +23,8 @@ function request() {
                 },
                 success : function(parse_data){
                         /*var json = eval('[' + parse_data + ']')[0];*/
-						alert(parse_data);
+					console.log(parse_data);
+						/*alert(parse_data);*/
                 }
             });
         });

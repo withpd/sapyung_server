@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.sapyoung.db.DbDao;
 import kr.co.sapyoung.db.DbFactory;
+import kr.co.sapyoung.vo.UserVo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -48,7 +49,8 @@ public class SapyoungServlet extends HttpServlet {
 		String retJson = null;
 		ObjectMapper mapper = null;
 		ByteArrayOutputStream out = null;
-		if(Constants.DB_ALL.equals(type)) {
+		
+		if("all".equals(type)) {
 			mapper = new ObjectMapper();
 			out = new ByteArrayOutputStream();
 //			mapper.writeValue(out, productList);
@@ -62,8 +64,18 @@ public class SapyoungServlet extends HttpServlet {
 		} else if(type.equals("sapyoung")) {
 			mapper = new ObjectMapper();
 			out = new ByteArrayOutputStream();
-			mapper.writeValue(out, "Hello~!");
-		}
+			mapper.writeValue(out, "hello");
+		} else if(type.equals("select")) {
+			String con = req.getParameter("condition");
+			mapper = new ObjectMapper();
+			out = new ByteArrayOutputStream();
+			mapper.writeValue(out, "BaeSungho");
+			UserVo vo = new UserVo();
+			vo.setName("TestUser");
+			vo.setPhone("12345678");
+			vo.setLocation("´ë±¸");
+			dao.insertUser(vo);
+		} 
 		
 	    final byte[] data = out.toByteArray();
 	    retJson = new String(data);

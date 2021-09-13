@@ -48,7 +48,6 @@ function search() {
 function insert() {
 	var type = "select";
 	var search_input = document.getElementById("search_input").value;
-	alert(search_input);
 	if (search_input == "") {
 		alert("alert");
 		return;
@@ -56,8 +55,7 @@ function insert() {
 		alert("search_input : " + search_input);
 	}
 	
-	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung/sapyoung";
-					 /*localhost:8080/sapyoung/sapyoung?type=select&phone=fd*/
+	var LOCAL_URL = "http://localhost:8080/sapyoung/sapyoung";
 	 $(document).ready(function(){
         })
         .ajaxStart(function(){

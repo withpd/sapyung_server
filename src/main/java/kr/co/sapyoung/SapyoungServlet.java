@@ -66,15 +66,14 @@ public class SapyoungServlet extends HttpServlet {
 			out = new ByteArrayOutputStream();
 			mapper.writeValue(out, "hello");
 		} else if(type.equals("select")) {
+			mapper = new ObjectMapper();
 			String phone = req.getParameter("phone");
-			
-			System.out.println("phone : " + phone);
-			
+			out = new ByteArrayOutputStream();
+			mapper.writeValue(out, phone);
 		} 
 		
 	    final byte[] data = out.toByteArray();
 	    retJson = new String(data);
-	    resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.getWriter().write(retJson);
 	}
 }

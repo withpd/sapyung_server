@@ -74,7 +74,6 @@ public class SapyoungServlet extends HttpServlet {
 		
 	    final byte[] data = out.toByteArray();
 	    retJson = new String(data);
-		resp.setContentType("text/json");
 	    resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.getWriter().write(retJson);
 	}

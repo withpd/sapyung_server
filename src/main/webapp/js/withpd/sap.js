@@ -56,7 +56,7 @@ function insert() {
 		alert("search_input : " + search_input);
 	}
 	
-	var LOCAL_URL = "localhost:8080/sapyoung/sapyoung";
+	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung/sapyoung";
 					 /*localhost:8080/sapyoung/sapyoung?type=select&phone=fd*/
 	 $(document).ready(function(){
         })

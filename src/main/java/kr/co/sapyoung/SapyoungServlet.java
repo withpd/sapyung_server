@@ -10,10 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.sapyoung.db.DbDao;
 import kr.co.sapyoung.db.DbFactory;
-import kr.co.sapyoung.vo.UserVo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /* 
  	mvn tomcat7:run
@@ -45,7 +45,7 @@ public class SapyoungServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String type = req.getParameter("type");
 		
-		System.out.printf(Constants.LOG_START_FORMAT, this.getClass().getName(), "doGet", Constants.getDate(Constants.DATE_LOG_FORMAT), type);
+	    System.out.printf(Constants.LOG_START_FORMAT, this.getClass().getName(), "doGet", Constants.getDate(Constants.DATE_LOG_FORMAT), type);
 		String retJson = null;
 		ObjectMapper mapper = null;
 		ByteArrayOutputStream out = null;
@@ -66,20 +66,38 @@ public class SapyoungServlet extends HttpServlet {
 			out = new ByteArrayOutputStream();
 			mapper.writeValue(out, "hello");
 		} else if(type.equals("select")) {
-			String con = req.getParameter("condition");
-			mapper = new ObjectMapper();
-			out = new ByteArrayOutputStream();
-			mapper.writeValue(out, "BaeSungho");
-			UserVo vo = new UserVo();
-			vo.setName("TestUser");
-			vo.setPhone("12345678");
-			vo.setLocation("대구");
-			dao.insertUser(vo);
+			String phone = req.getParameter("phone");
+			
+			System.out.println("phone : " + phone);
+			
+			
+//			DbTest db = new DbTest("admin", "1234");
+//			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 접속	
+////			db.insert("영수", "100000", "대전");	// 이름/폰/주소
+////			db.delete("배성호");
+////			db.update("인천", "배성호");
+//			ArrayList<UserDto> voList = db.select(phone);
+			
+//			int result = voList.size();
+//			System.out.println(result + "건");
+			
+			
+			
+//			String con = req.getParameter("condition");
+//			mapper = new ObjectMapper();
+//			out = new ByteArrayOutputStream();
+//			mapper.writeValue(out, "BaeSungho");
+//			UserVo vo = new UserVo();
+//			vo.setName("TestUser");
+//			vo.setPhone("12345678");
+//			vo.setLocation("대구");
+//			dao.insertUser(vo);
 		} 
 		
 	    final byte[] data = out.toByteArray();
 	    retJson = new String(data);
 		resp.setContentType("text/json");
+	    resp.setHeader("Access-Control-Allow-Origin", "*");
 		resp.getWriter().write(retJson);
 	}
 }

@@ -46,10 +46,51 @@ function search() {
 }
 
 function insert() {
-	console.log("insert");
+	var type = "select";
+	var search_input = document.getElementById("search_input").value;
+	alert(search_input);
+	if (search_input == "") {
+		alert("alert");
+		return;
+	} else {
+		alert("search_input : " + search_input);
+	}
+	
+	var LOCAL_URL = "localhost:8080/sapyoung/sapyoung";
+					 /*localhost:8080/sapyoung/sapyoung?type=select&phone=fd*/
+	 $(document).ready(function(){
+        })
+        .ajaxStart(function(){
+        })
+        .ajaxStop(function(){
+        });
 
+        $(document).ready(function(){
+            $.ajax({
+                crossOrigin : true,
+                type : "GET", // 전송방식을 지정한다 (POST,GET)
+                url : LOCAL_URL + '?type=' + type + '&phone=' + search_input,
+                dataType : "html",// 호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을
+                                                                // 사용할 수 있다.
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                },
+                error : function(){
+                    alert('error');
+                },
+                success : function(parse_data){
+                        /*var json = eval('[' + parse_data + ']')[0];*/
+					console.log(parse_data);
+						/*alert(parse_data);*/
+                }
+            });
+        });
+	
+
+	/*
 	var res = document.getElementById("search_input").value;
 	document.getElementById("td1").innerHTML = res;
+	*/
 }
 
 /* Teachable Machine Function Start */

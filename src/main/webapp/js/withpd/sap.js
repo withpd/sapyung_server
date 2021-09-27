@@ -1,4 +1,4 @@
-function request() {
+	function request() {
 	var type = "sapyoung";
 	var LOCAL_URL = "http://ec2-18-118-166-134.us-east-2.compute.amazonaws.com:8080/sapyoung/sapyoung";
 	 $(document).ready(function(){
@@ -51,8 +51,6 @@ function insert() {
 	if (search_input == "") {
 		alert("alert");
 		return;
-	} else {
-		alert("search_input : " + search_input);
 	}
 	
 	var LOCAL_URL = "http://localhost:8080/sapyoung/sapyoung";
@@ -77,9 +75,86 @@ function insert() {
                     alert('error');
                 },
                 success : function(parse_data){
-                        /*var json = eval('[' + parse_data + ']')[0];*/
-					console.log(parse_data);
-						/*alert(parse_data);*/
+                    var json = eval('[' + parse_data + ']')[0];
+
+					for(var i = 0; i < json.length; i++) {
+						
+						console.log("[User #" + (i+1) + "]");
+						
+						var user = json[i];
+						var name = user.name;
+						var phone = user.phone; 
+						var addr = user.addr;
+						
+						var id_name = 'td' + (i+1) +'_name';	// td0_name
+						var id_phone = 'td' + (i+1) +'_phone';
+						var id_addr = 'td' + (i+1) +'_addr';
+						
+						document.getElementById(id_name).innerHTML = name;
+						document.getElementById(id_phone).innerHTML = phone;
+						document.getElementById(id_addr).innerHTML = addr;
+						
+					}
+
+					
+                }
+            });
+        });
+	
+
+	/*
+	var res = document.getElementById("search_input").value;
+	document.getElementById("td1").innerHTML = res;
+	*/
+}
+
+function select() {
+	var type = "paging";
+	
+	var LOCAL_URL = "http://localhost:8080/sapyoung/sapyoung";
+	 $(document).ready(function(){
+        })
+        .ajaxStart(function(){
+        })
+        .ajaxStop(function(){
+        });
+
+        $(document).ready(function(){
+            $.ajax({
+                crossOrigin : true,
+                type : "GET", // 전송방식을 지정한다 (POST,GET)
+                url : LOCAL_URL + '?type=' + type,
+                dataType : "html",// 호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을
+                                                                // 사용할 수 있다.
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                },
+                error : function(){
+                    alert('error');
+                },
+                success : function(parse_data){
+                    var json = eval('[' + parse_data + ']')[0];
+
+					for(var i = 0; i < json.length; i++) {
+						
+						console.log("[User #" + (i+1) + "]");
+						
+						var user = json[i];
+						var name = user.name;
+						var phone = user.phone; 
+						var addr = user.addr;
+						
+						var id_name = 'td' + (i+1) +'_name';	// td0_name
+						var id_phone = 'td' + (i+1) +'_phone';
+						var id_addr = 'td' + (i+1) +'_addr';
+						
+						document.getElementById(id_name).innerHTML = name;
+						document.getElementById(id_phone).innerHTML = phone;
+						document.getElementById(id_addr).innerHTML = addr;
+						
+					}
+
+					
                 }
             });
         });

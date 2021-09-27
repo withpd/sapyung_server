@@ -12,7 +12,38 @@
 	<script src="js/withpd/sap.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.js"></script>
+	
+	<style>
+		.center {
+		  text-align: center;
+		}
+		
+		.pagination {
+		  display: inline-block;
+		}
+		
+		.pagination a {
+		  color: black;
+		  float: left;
+		  padding: 8px 16px;
+		  text-decoration: none;
+		  transition: background-color .3s;
+		  border: 1px solid #ddd;
+		  margin: 0 4px;
+		  cursor:pointer;
+		}
+		
+		.pagination a.active {
+		  background-color: #4CAF50;
+		  color: white;
+		  border: 1px solid #4CAF50;
+		}
+		
+		.pagination a:hover:not(.active) {background-color: #ddd;}
+	</style>
+	
 </head>
+
 <body>
 	<!-- Menu Start -->
 	<div style="background-color: rgba(235,233,229,1); padding: 10px;">
@@ -84,34 +115,49 @@
 				<thead>
 					<tr>
 						<th width="30%">ROW_HEAD1</th>
-						<td width="10%">Menu01</td>
-						<td width="40%">Menu02</td>
-						<td width="20%">Menu03</td>
+						<td width="10%">Name</td>
+						<td width="40%">Phone</td>
+						<td width="20%">Addr</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class="tr_color">
-						<th>ROW_HEAD2</th>
-						<td id="td1"></td>
-						<td>Value02</td>
-						<td>Value03</td>
-					</tr>  
+						<th>1</th>
+						<td id="td1_name"></td>
+						<td id="td1_phone"></td>
+						<td id="td1_addr"></td>
+					</tr>
 					<tr>   
-						<th>ROW_HEAD3</th>
-						<td>Value11</td>
-						<td>Value12</td>
-						<td>Value13</td>
-					</tr>  
+						<th>2</th>
+						<td id="td2_name"></td>
+						<td id="td2_phone"></td>
+						<td id="td2_addr"></td>
+					</tr>
 					 <tr class="tr_color">  
-						<th>ROW_HEAD4</th>
-						<td>Value21</td>
-						<td>Value22</td>
-						<td>Value23</td>
+						<th>3</th>
+						<td id="td3_name"></td>
+						<td id="td3_phone"></td>
+						<td id="td3_addr"></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<!-- Table End -->
+		
+		<!-- PAGING Start -->
+		<div class="center">
+		  <div class="pagination">
+			  <a>&laquo;</a>
+			  <a onclick="select();">1</a>
+			  <a onclick="select();">2</a>
+			  <a onclick="select();">3</a>
+			  <a onclick="select();" class="active">4</a>
+			  <a onclick="select();">5</a>
+			  <a onclick="select();">6</a>
+			  <a>&raquo;</a>
+		  </div>
+		</div>	
+		<!-- PAGING End -->
 		
 		<!-- Table Menu Start -->
 		<div align="right">

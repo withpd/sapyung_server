@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.sapyoung.db.DbDao;
 import kr.co.sapyoung.db.DbFactory;
+import kr.co.sapyoung.db.DbTest;
+import kr.co.sapyoung.vo.UserDto;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -68,9 +70,43 @@ public class SapyoungServlet extends HttpServlet {
 		} else if(type.equals("select")) {
 			mapper = new ObjectMapper();
 			String phone = req.getParameter("phone");
+			
+			DbTest db = new DbTest("admin", Constants.pw);
+			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 立加	
+			ArrayList<UserDto> voList = db.select(phone);
+			
+			int result = voList.size();
+			System.out.println(result + "扒");
+			
 			out = new ByteArrayOutputStream();
-			mapper.writeValue(out, phone);
-		} 
+			mapper.writeValue(out, voList);
+		} else if(type.equals("insert")) {
+			mapper = new ObjectMapper();
+			String phone = req.getParameter("phone");
+			String name = req.getParameter("name");
+			String addr = req.getParameter("addr");
+			
+			DbTest db = new DbTest("admin", Constants.pw);
+			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 立加	
+			int result = db.insert(name, phone, addr);
+			
+//			int result = voList.size();
+//			System.out.println(result + "扒");
+			out = new ByteArrayOutputStream();
+			mapper.writeValue(out, result);			
+		} else if(type.equals("paging")) {
+			mapper = new ObjectMapper();
+			
+			DbTest db = new DbTest("admin", Constants.pw);
+			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 立加	
+			ArrayList<UserDto> voList = db.select("");
+			
+			int result = voList.size();
+			System.out.println(result + "扒");
+			
+			out = new ByteArrayOutputStream();
+			mapper.writeValue(out, voList);
+		}
 		
 	    final byte[] data = out.toByteArray();
 	    retJson = new String(data);

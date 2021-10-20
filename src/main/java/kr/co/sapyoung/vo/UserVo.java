@@ -5,8 +5,26 @@ public class UserVo {
     private String location;
     private String pw;
     private String time;
+    private String name;
+    private String phone;
 
-    public String getMail() {
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMail() {
         return mail;
     }
 

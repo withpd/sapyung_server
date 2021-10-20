@@ -108,7 +108,7 @@ function insert() {
 	*/
 }
 
-function select() {
+function select(page) {
 	var type = "paging";
 	
 	var LOCAL_URL = "http://localhost:8080/sapyoung/sapyoung";
@@ -123,7 +123,7 @@ function select() {
             $.ajax({
                 crossOrigin : true,
                 type : "GET", // 전송방식을 지정한다 (POST,GET)
-                url : LOCAL_URL + '?type=' + type,
+                url : LOCAL_URL + '?type=' + type + '&page=' + page,
                 dataType : "html",// 호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을
                                                                 // 사용할 수 있다.
                 beforeSend : function(xhr){
@@ -134,7 +134,7 @@ function select() {
                 },
                 success : function(parse_data){
                     var json = eval('[' + parse_data + ']')[0];
-
+					
 					for(var i = 0; i < json.length; i++) {
 						
 						console.log("[User #" + (i+1) + "]");
@@ -153,8 +153,17 @@ function select() {
 						document.getElementById(id_addr).innerHTML = addr;
 						
 					}
-
 					
+					/* page color (class="active")*/
+					var pages = document.getElementsByClassName("page");
+					
+					for(i=0; i<pages.length; i++) {
+						if(i==(page-1)) {
+							pages[i].setAttribute("class", "page active");
+						} else {
+							pages[i].setAttribute("class", "page");
+						}
+					}
                 }
             });
         });

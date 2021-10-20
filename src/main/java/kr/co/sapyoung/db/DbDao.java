@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import kr.co.sapyoung.Constants;
+import kr.co.sapyoung.vo.UserVo;
 
 public class DbDao {
 	private SqlSessionFactory sqlSessionFactory = null;
@@ -160,8 +161,8 @@ public class DbDao {
 		}
 		return null;
 	}
-	
-	public int insertUser(UserVO vo) {
+*/	
+	public int insertUser(UserVo vo) {
 		SqlSession session = sqlSessionFactory.openSession();
 		int insertCnt = -1;
 		try {
@@ -176,7 +177,7 @@ public class DbDao {
 		}
 		return insertCnt;
 	}
-	
+/*	
 	public int insertItem(ItemVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
 		int insertCnt = -1;

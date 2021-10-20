@@ -7,23 +7,22 @@
 
 	<resultMap id="userResult" type="UserVo">
 		<result property="id" column="id" />
-		<result property="accessToken" column="accessToken" />
 		<result property="name" column="name" />
+		<result property="phone" column="phone" />
 		<result property="mail" column="mail" />
-		<result property="thumbNailImg" column="thumbNailImg" />
-		<result property="isEmailValid" column="isEmailValid" />
-		<result property="isEmailVerified" column="isEmailVerified" />
-		<result property="loginType" column="loginType" />
+		<result property="time" column="time" />
+		<result property="pw" column="pw" />
+		<result property="location" column="attr" />
 	</resultMap>
 <!-- 
 	<select id="selectUserByMail" parameterType="String" resultMap="userResult">
 		SELECT * FROM SIMBA_USER WHERE MAIL = #{mail}
 	</select>
-
+-->
 	<insert id="insertUser" parameterType="UserVO">
-		INSERT INTO SIMBA_USER (ACCESSTOKEN, NAME, MAIL, THUMBNAILIMG, ISEMAILVALID, ISEMAILVERIFIED, LOGINTYPE) VALUES (#{accessToken}, #{name}, #{mail}, #{thumbNailImg}, #{isEmailValid}, #{isEmailVerified}, #{loginType})
+		INSERT INTO geek9.Test(name, phone, addr) VALUES (#{name}, #{phone}, #{addr})
 	</insert>
-
+<!-- 
 	<update id="updateAccessToken" parameterType="java.util.HashMap">
 		UPDATE SIMBA_USER SET ACCESSTOKEN = #{accessToken} WHERE mail=#{mail}
 	</update>

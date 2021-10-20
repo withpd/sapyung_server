@@ -73,7 +73,7 @@ public class SapyoungServlet extends HttpServlet {
 			
 			DbTest db = new DbTest("admin", Constants.pw);
 			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 立加	
-			ArrayList<UserDto> voList = db.select(phone);
+			ArrayList<UserDto> voList = db.select(phone, 1);
 			
 			int result = voList.size();
 			System.out.println(result + "扒");
@@ -95,11 +95,15 @@ public class SapyoungServlet extends HttpServlet {
 			out = new ByteArrayOutputStream();
 			mapper.writeValue(out, result);			
 		} else if(type.equals("paging")) {
+			
+			String page = req.getParameter("page");
+			int intPage = Integer.parseInt(page);
+			
 			mapper = new ObjectMapper();
 			
 			DbTest db = new DbTest("admin", Constants.pw);
 			db.connect("database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com", "3306", "geek9", "com.mysql.cj.jdbc.Driver");		// 立加	
-			ArrayList<UserDto> voList = db.select("");
+			ArrayList<UserDto> voList = db.select("", intPage);
 			
 			int result = voList.size();
 			System.out.println(result + "扒");

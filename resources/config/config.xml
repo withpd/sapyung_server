@@ -13,10 +13,10 @@
         <environment id="development">
           <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-                <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
-                <property name="username" value="system"/>
-                <property name="password" value="bsh0812"/>
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:oracle:thin:@database-1.cjvdgquniwjw.ap-northeast-2.rds.amazonaws.com:3306:geek9"/>
+                <property name="username" value="admin"/>
+                <property name="password" value="bsh08120812"/>
                 
                 <!-- <property name="url" value="jdbc:oracle:thin:@112.216.130.195:1521:orcl"/>
                 <property name="username" value="sys_user"/>

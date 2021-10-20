@@ -13,10 +13,20 @@
 		<result property="publisher" column="publisher" />
 		<result property="isbn" column="isbn" />
 	</resultMap>
-<!-- 
-	<insert id="insertItem" parameterType="ItemVO">
-		INSERT INTO SIMBA_ITEM (MAIL, NAME, COLOR, LENGTH, AMOUNT, PRICE, SAVETYPE, IMGURL, TIME, TITLE, CATE) VALUES (#{mail}, #{name}, #{color}, #{length}, #{amount}, #{price}, #{saveType}, #{imgUrl}, #{time}, #{title}, #{cate})
+	
+	<resultMap id="userResult" type="UserVo">
+		<result property="name" column="name" />
+		<result property="mail" column="mail" />
+		<result property="location" column="addr" />
+		<result property="pw" column="pw" />
+		<result property="time" column="time" />
+		<result property="phone" column="phone" />
+	</resultMap>
+	
+	<insert id="insertItem" parameterType="BookVo">
+		INSERT INTO geek9.Test(name, phone, addr) VALUES (#{name}, #{phone}, #{addr})
 	</insert>
+<!-- 
 	
 	<select id="selectItem" parameterType="ItemVO" resultMap="itemResult">
 		SELECT * FROM SIMBA_ITEM WHERE MAIL = #{mail} AND COLOR = #{color} AND LENGTH = #{length} AND SAVETYPE = #{saveType} AND TITLE = #{title}
